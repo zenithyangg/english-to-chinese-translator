@@ -1,0 +1,87 @@
+{
+  "name": "english-to-chinese-translator",
+  "displayName": "English to Chinese Translator",
+  "description": "在 VS Code 中快速翻译英文文本为中文，支持悬停翻译和选中翻译",
+  "version": "1.0.0",
+  "publisher": "your-username",
+  "author": {
+    "name": "Your Name"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/zenithyangg/english-to-chinese-translator"
+  },
+  "bugs": {
+    "url": "https://github.com/zenithyangg/english-to-chinese-translator/issues"
+  },
+  "homepage": "https://github.com/zenithyangg/english-to-chinese-translator#readme",
+  "engines": {
+    "vscode": "^1.103.0"
+  },
+  "categories": [
+    "Other",
+    "Education",
+    "Formatters"
+  ],
+  "keywords": [
+    "translate",
+    "translation",
+    "english",
+    "chinese",
+    "中文",
+    "翻译"
+  ],
+  "activationEvents": [
+    "*"
+  ],
+  "main": "./out/extension.js",
+  "contributes": {
+    "commands": [
+      {
+        "command": "english-to-chinese-translator.translate",
+        "title": "翻译选中的文本"
+      }
+    ],
+    "menus": {
+      "editor/context": [
+        {
+          "when": "editorHasSelection",
+          "command": "english-to-chinese-translator.translate",
+          "group": "navigation"
+        }
+      ]
+    },
+    "keybindings": [
+      {
+        "command": "english-to-chinese-translator.translate",
+        "key": "ctrl+shift+t",
+        "mac": "cmd+shift+t",
+        "when": "editorHasSelection"
+      }
+    ]
+  },
+  "scripts": {
+    "vscode:prepublish": "npm run compile",
+    "compile": "tsc -p ./",
+    "watch": "tsc -watch -p ./",
+    "pretest": "npm run compile && npm run lint",
+    "lint": "eslint src",
+    "test": "vscode-test"
+  },
+  "devDependencies": {
+    "@types/mocha": "^10.0.10",
+    "@types/node": "22.x",
+    "@types/node-fetch": "^2.6.13",
+    "@types/vscode": "^1.103.0",
+    "@typescript-eslint/eslint-plugin": "^8.42.0",
+    "@typescript-eslint/parser": "^8.42.0",
+    "@vscode/test-cli": "^0.0.11",
+    "@vscode/test-electron": "^2.5.2",
+    "eslint": "^9.34.0",
+    "typescript": "^5.9.2"
+  },
+  "dependencies": {
+    "@vscode/vscode-languagedetection": "^1.0.22",
+    "node-fetch": "^2.7.0"
+  }
+}
