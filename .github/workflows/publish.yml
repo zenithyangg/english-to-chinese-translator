@@ -16,7 +16,6 @@ jobs:
         uses: actions/setup-node@v4
         with:
           node-version: '18'
-          registry-url: 'https://registry.npmjs.org'
           
       - name: Check package.json
         run: |
@@ -33,17 +32,11 @@ jobs:
           echo "Compiling typescript..."
           npm run compile
           
-      - name: Package Extension
+      - name: Publish to Visual Studio Marketplace
         run: |
           echo "Installing vsce..."
           npm install -g @vscode/vsce
-          echo "Packaging extension..."
-          vsce package
-
-      - name: Publish to Visual Studio Marketplace
-        run: |
           echo "Publishing to VS Code Marketplace..."
-          vsce publish -p ${{ secrets.VSCE_PAT }} --packagePath "*.vsix"
+          vsce publish -p ${{ secrets.VSCE_PAT }} --no-dependencies
         env:
           VSCE_PAT: ${{ secrets.VSCE_PAT }}
-          NODE_AUTH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
