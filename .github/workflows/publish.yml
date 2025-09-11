@@ -9,21 +9,41 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
       
       - name: Setup Node.js
         uses: actions/setup-node@v4
         with:
           node-version: '18'
+          registry-url: 'https://registry.npmjs.org'
+          
+      - name: Check package.json
+        run: |
+          echo "Checking package.json configuration..."
+          cat package.json
           
       - name: Install dependencies
-        run: npm ci
+        run: |
+          echo "Installing dependencies..."
+          npm ci
         
       - name: Compile
-        run: npm run compile
+        run: |
+          echo "Compiling typescript..."
+          npm run compile
+          
+      - name: Package Extension
+        run: |
+          echo "Installing vsce..."
+          npm install -g @vscode/vsce
+          echo "Packaging extension..."
+          vsce package
 
       - name: Publish to Visual Studio Marketplace
         run: |
-          npm install -g @vscode/vsce
-          vsce publish -p ${{ secrets.VSCE_PAT }}
+          echo "Publishing to VS Code Marketplace..."
+          vsce publish -p ${{ secrets.VSCE_PAT }} --packagePath "*.vsix"
         env:
           VSCE_PAT: ${{ secrets.VSCE_PAT }}
+          NODE_AUTH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
