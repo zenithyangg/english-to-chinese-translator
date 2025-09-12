@@ -1,35 +1,56 @@
-# english-to-chinese-translator README
+# English to Chinese Translator for VS Code
 
-This is the README for your extension "english-to-chinese-translator". After writing up a brief description, we recommend including the following sections.
+一个简单高效的 VS Code 英文翻译扩展，支持悬停翻译和选中翻译功能。
 
-## Features
+## ✨ 主要功能
 
-Describe specific features of your extension including screenshots of your extension in action. Image paths are relative to this README file.
+- 🔍 **悬停翻译**：将鼠标悬停在英文单词上即可查看中文翻译
+- ✨ **选中翻译**：选中任意英文文本，右键选择"翻译选中的文本"或使用快捷键进行翻译
+- 🎯 **快捷键支持**：使用 `Cmd+Shift+T`（macOS）或 `Ctrl+Shift+T`（Windows/Linux）快速翻译选中的文本
+- 🌈 **优雅的界面**：翻译结果以优雅的方式显示，支持暗色和亮色主题
 
-For example if there is an image subfolder under your extension project workspace:
+## 📋 使用方法
 
-\!\[feature X\]\(images/feature-x.png\)
+### 悬停翻译
 
-> Tip: Many popular extensions utilize animations. This is an excellent way to show off your extension! We recommend short, focused animations that are easy to follow.
+1. 将鼠标悬停在任何英文单词上
+2. 片刻后将显示对应的中文翻译
 
-## Requirements
+### 选中翻译
 
-If you have any requirements or dependencies, add a section describing those and how to install and configure them.
+1. 选择任意英文文本（单词、短语或句子）
+2. 使用以下任一方式触发翻译：
+   - 右键单击，选择"翻译选中的文本"
+   - 使用快捷键：`Cmd+Shift+T`（macOS）或 `Ctrl+Shift+T`（Windows/Linux）
 
-## Extension Settings
+## 🔧 支持的文件类型
 
-Include if your extension adds any VS Code settings through the `contributes.configuration` extension point.
+- 纯文本 (.txt)
+- Markdown (.md)
+- JavaScript (.js)
+- TypeScript (.ts)
+- Python (.py)
+- HTML (.html)
+- CSS (.css)
 
-For example:
+## ⚙️ 系统要求
 
-This extension contributes the following settings:
+- VS Code 1.103.0 或更高版本
 
-* `myExtension.enable`: Enable/disable this extension.
-* `myExtension.thing`: Set to `blah` to do something.
+## 🐛 已知问题
 
-## Known Issues
+- 翻译速度可能受网络状况影响
+- 极少数专业术语可能翻译不准确
 
-Calling out known issues can help limit users opening duplicate issues against your extension.
+## 🔜 未来计划
+
+- 支持更多编程语言
+- 增加自定义翻译 API 选项
+- 添加翻译历史记录功能
+
+## 🙏 反馈与贡献
+
+如果您有任何问题、建议或想要贡献代码，请访问我们的 [GitHub 仓库](https://github.com/zenithyangg/english-to-chinese-translator)。
 
 ## Release Notes
 
