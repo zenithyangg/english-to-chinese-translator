@@ -3,9 +3,9 @@
   "displayName": "English to Chinese Translator",
   "description": "在 VS Code 中快速翻译英文文本为中文，支持悬停翻译和选中翻译",
   "version": "1.0.0",
-  "publisher": "your-username",
+  "publisher": "zenithyang",
   "author": {
-    "name": "Your Name"
+    "name": "zenithyang"
   },
   "repository": {
     "type": "git",
@@ -32,7 +32,13 @@
     "翻译"
   ],
   "activationEvents": [
-    "*"
+    "onLanguage:plaintext",
+    "onLanguage:markdown",
+    "onLanguage:javascript",
+    "onLanguage:typescript",
+    "onLanguage:python",
+    "onLanguage:html",
+    "onLanguage:css"
   ],
   "main": "./out/extension.js",
   "contributes": {
