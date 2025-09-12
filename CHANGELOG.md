@@ -1,9 +1,16 @@
 # Change Log
 
-All notable changes to the "english-to-chinese-translator" extension will be documented in this file.
+## [1.0.0] - 2025-09-11
 
-Check [Keep a Changelog](http://keepachangelog.com/) for recommendations on how to structure this file.
+### 新增
+- ✨ 英文单词悬停翻译功能
+- 🌟 选中文本翻译功能
+- ⌨️ 快捷键支持 (Cmd+Shift+T / Ctrl+Shift+T)
+- 🎨 优雅的翻译显示界面
+- 🌈 支持亮色和暗色主题
 
-## [Unreleased]
-
-- Initial release
+### 功能特点
+- 实时翻译英文文本为中文
+- 支持单词、短语和句子的翻译
+- 翻译结果优雅显示，8秒后自动消失
+- 完整的错误处理和用户提示

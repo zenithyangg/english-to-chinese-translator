@@ -16,7 +16,8 @@
   },
   "homepage": "https://github.com/zenithyangg/english-to-chinese-translator#readme",
   "engines": {
-    "vscode": "^1.103.0"
+    "vscode": "^1.103.0",
+    "node": ">=20.18.1"
   },
   "categories": [
     "Other",

@@ -1,4 +1,5 @@
 name: Publish Extension
+
 on:
   release:
     types: [created, edited]
@@ -8,35 +9,80 @@ jobs:
   build:
     runs-on: ubuntu-latest
     steps:
+      # 1️⃣ 拉取代码
       - uses: actions/checkout@v4
         with:
           fetch-depth: 0
-      
+
+      # 2️⃣ 安装 Node.js 20
       - name: Setup Node.js
         uses: actions/setup-node@v4
         with:
-          node-version: '18'
-          
-      - name: Check package.json
+          node-version: '20.x'
+          check-latest: true
+
+      # 3️⃣ 查看环境信息和 package.json 配置
+      - name: Check environment and package.json
         run: |
+          echo "Node.js version:"
+          node --version
+          echo "NPM version:"
+          npm --version
           echo "Checking package.json configuration..."
           cat package.json
-          
+
+      # 4️⃣ 安装依赖
       - name: Install dependencies
         run: |
           echo "Installing dependencies..."
-          npm ci
-        
+          npm ci --verbose
+
+      # 5️⃣ 编译 TypeScript
       - name: Compile
         run: |
-          echo "Compiling typescript..."
+          echo "Compiling TypeScript..."
           npm run compile
-          
+
+      # 6️⃣ 更新 package.json 版本为 release tag（去掉 v 前缀）
+      - name: Set version from release tag
+        if: github.event.release.tag_name != ''
+        run: |
+          echo "Setting version from release tag..."
+          TAG_NAME="${GITHUB_REF##refs/tags/}"
+          VERSION="${TAG_NAME#v}"   # 去掉前缀 v
+          echo "Release tag: $TAG_NAME -> Version: $VERSION"
+          npm version $VERSION --no-git-tag-version
+          cat package.json
+        env:
+          GITHUB_REF: ${{ github.ref }}
+
+      # 7️⃣ 安装最新版本的 vsce 工具
+      - name: Install vsce
+        run: |
+          echo "Installing latest vsce..."
+          npm install -g @vscode/vsce
+          vsce --version
+
+      # 8️⃣ 打包扩展，检查能否生成 .vsix
+      - name: Package Extension
+        run: |
+          echo "Packaging extension..."
+          vsce package
+          ls -la *.vsix
+
+      # 9️⃣ 显示 release notes
+      - name: Show Release Notes
+        if: github.event.release.body != ''
+        run: |
+          echo "Release Notes:"
+          echo "----------------------------------"
+          echo "${{ github.event.release.body }}"
+          echo "----------------------------------"
+
+      # 🔟 发布到 VS Code Marketplace
       - name: Publish to Visual Studio Marketplace
         run: |
-          echo "Installing vsce..."
-          npm install -g @vscode/vsce
           echo "Publishing to VS Code Marketplace..."
-          vsce publish -p ${{ secrets.VSCE_PAT }} --no-dependencies
+          vsce publish -p "${{ secrets.VSCE_PAT }}"
         env:
           VSCE_PAT: ${{ secrets.VSCE_PAT }}
