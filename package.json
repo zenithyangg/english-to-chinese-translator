@@ -2,7 +2,7 @@
   "name": "english-to-chinese-translator",
   "displayName": "English to Chinese Translator",
   "description": "在 VS Code 中快速翻译英文文本为中文，支持悬停翻译和选中翻译",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "publisher": "studiozenith",
   "author": {
     "name": "zenithyang"
