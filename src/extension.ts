@@ -36,7 +36,6 @@ async function translateText(text: string): Promise<string | null> {
 export function activate(context: vscode.ExtensionContext) {
     // 显示激活消息
     outputChannel.appendLine('=== English to Chinese Translator is now active! ===');
-    vscode.window.showInformationMessage('英汉翻译扩展已激活！');
 
     // 注册悬停提供器
     const hoverProvider = vscode.languages.registerHoverProvider('*', {
