@@ -1,4 +1,0 @@
-Hello World! This is a test file.
-I love programming and writing code.
-Visual Studio Code is a great editor.
-Please try to hover over these English words to see the Chinese translation.

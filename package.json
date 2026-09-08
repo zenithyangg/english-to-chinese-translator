@@ -33,13 +33,7 @@
     "翻译"
   ],
   "activationEvents": [
-    "onLanguage:plaintext",
-    "onLanguage:markdown",
-    "onLanguage:javascript",
-    "onLanguage:typescript",
-    "onLanguage:python",
-    "onLanguage:html",
-    "onLanguage:css"
+    "onStartupFinished"
   ],
   "main": "./out/extension.js",
   "contributes": {
@@ -88,7 +82,6 @@
     "typescript": "^5.9.2"
   },
   "dependencies": {
-    "@vscode/vscode-languagedetection": "^1.0.22",
     "node-fetch": "^2.7.0"
   }
 }
